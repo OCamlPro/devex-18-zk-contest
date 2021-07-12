@@ -10,7 +10,7 @@ Printf.sprintf
 {|#include <stdlib.h>
 #include <iostream>
 
-#include <nil/crypto3/zk/snark/blueprint.hpp>
+#include <nil/crypto3/zk/components/blueprint.hpp>
 #include <nil/crypto3/zk/snark/algorithms/generate.hpp>
 #include <nil/crypto3/zk/snark/algorithms/verify.hpp>
 #include <nil/crypto3/zk/snark/algorithms/prove.hpp>
@@ -30,36 +30,23 @@ Printf.sprintf
 #include <nil/marshalling/status_type.hpp>
 
 #include "%s.hpp"
-#include "picosha2.h"
+// #include "picosha2.hpp"
 #include <fstream>
 
-using namespace nil::crypto3::zk::snark;
+using namespace nil::crypto3;
+using namespace nil::crypto3::zk;
+using namespace nil::crypto3::zk::components;
 using namespace nil::crypto3::algebra;
+using namespace nil::crypto3::zk::snark ;
 
 typedef algebra::curves::bls12<381> curve_type;
 typedef typename curve_type::scalar_field_type field_type;
-
 typedef zk::snark::r1cs_gg_ppzksnark<curve_type> scheme_type;
 
-void append_to_byteblob( std::vector<std::uint8_t> &byteblob, std::vector<std::uint8_t> bytes)
-{
-  byteblob.insert (byteblob.end(), bytes.begin(), bytes.end());
-}
 
-void binfile_of_byteblob( std::string file,  std::vector<std::uint8_t> byteblob ){
-  boost::filesystem::ofstream poutf( file );
-  for (const auto &v : byteblob) {
-    poutf << v;
-  }
-  poutf.close();
-}
 
-void hexfile_of_byteblob( std::string file,  std::vector<std::uint8_t> byteblob ){
-  std::string hex_str = picosha2::bytes_to_hex_string(byteblob.begin(), byteblob.end());
-  boost::filesystem::ofstream poutf( file );
-  poutf << hex_str << std::endl;
-  poutf.close();
-}
+// must be done here, after definition of curve_type and field_type
+#include "utils.hpp"
 
 std::vector<int> read_input(std::string filename){
   std::vector<int> sudoku;
@@ -240,13 +227,6 @@ int generate_keys(){
   return 0;
 }
 
-
-inline std::vector<uint8_t> read_vector_from_disk(std::string file_path)
-{
-  std::ifstream instream(file_path, std::ios::in | std::ios::binary);
-  std::vector<uint8_t> data((std::istreambuf_iterator<char>(instream)), std::istreambuf_iterator<char>());
-  return data;
-}
 
 typename scheme_type::proving_key_type fetch_proving_key(){
   std::vector<uint8_t> proving_key_byteblob = read_vector_from_disk("sudoku_proving_key.bin");

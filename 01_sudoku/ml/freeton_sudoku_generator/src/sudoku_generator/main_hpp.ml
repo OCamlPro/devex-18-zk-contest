@@ -41,20 +41,22 @@ Printf.sprintf
 #ifndef CRYPTO3_BLUEPRINT_%s_TEST_COMPONENT_HPP
 #define CRYPTO3_BLUEPRINT_%s_TEST_COMPONENT_HPP
 
-#include <nil/crypto3/zk/snark/component.hpp>
+#include <nil/crypto3/zk/components/component.hpp>
 
-#include <nil/crypto3/zk/snark/blueprint.hpp>
-#include <nil/crypto3/zk/snark/blueprint_variable.hpp>
-#include <nil/crypto3/zk/snark/components/basic_components.hpp>
+#include <nil/crypto3/zk/components/blueprint.hpp>
+#include <nil/crypto3/zk/components/blueprint_variable.hpp>
+// #include <nil/crypto3/zk/snark/components/basic_components.hpp>
 
 #include <nil/crypto3/zk/snark/relations/constraint_satisfaction_problems/r1cs.hpp>
 
-using namespace nil::crypto3::zk::snark;
 using namespace nil::crypto3;
-// using namespace nil::crypto3::algebra;
+using namespace nil::crypto3::zk;
+using namespace nil::crypto3::zk::components;
+using namespace nil::crypto3::algebra;
+using namespace nil::crypto3::zk::snark ;
 
 template<typename FieldType>
-class test_component : public nil::crypto3::zk::snark::components::component<FieldType> {
+class test_component : public nil::crypto3::zk::components::component<FieldType> {
     using field_type = FieldType;
     %s
     //blueprint_variable<field_type> sym_1;
@@ -69,7 +71,7 @@ public:
                 //const blueprint_variable<field_type> &out,
                 //const blueprint_variable<field_type> &x
  ) :
-      nil::crypto3::zk::snark::components::component<field_type>(bp) %s {
+      nil::crypto3::zk::components::component<field_type>(bp) %s {
 
       // Allocate variables to blueprint
       %s

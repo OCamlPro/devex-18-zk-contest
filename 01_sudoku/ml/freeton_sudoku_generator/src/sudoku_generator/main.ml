@@ -368,8 +368,8 @@ let oc_arguments variables =
 
 
 let oc_state state name =
-  let hpp_file = Printf.sprintf "../../../ton-proof-verification-contest/bin/cli/src/%s.hpp" name in
-  let cpp_file = Printf.sprintf "../../../ton-proof-verification-contest/bin/cli/src/%s.cpp" name in
+  let hpp_file = Printf.sprintf "%s.hpp" name in
+  let cpp_file = Printf.sprintf "%s.cpp" name in
   (* let res = Printf.sprintf "%s %s %s"
    * (oc_define_blueprint_variables "//private (intermediary) variables\n"
    *    state.private_variables)
