@@ -5,6 +5,8 @@ By Thomas Sibut-Pinote and Fabrice Le Fessant at OCamlPro.
 A detailed description of this submission is available in the
 "submission" sub-directory ([PDF](submission/submission.pdf)).
 
+Our officiel submission is [here](https://devex.gov.freeton.org/submission?proposalAddress=0%3Ae6b65075478e7d412fdb0870452f30dfa8bf51272e28a3167abc5c5df6fd051d&submissionId=1).
+
 ## Introduction
 
 This submission is composed of 3 use cases. As such, the jury can
