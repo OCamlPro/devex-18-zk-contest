@@ -171,10 +171,12 @@ The (well-known) constraints of a Sudoku are encoded by the following
 equations:
 \[ \prod_{k=1}^{n^2} \left( x_{i,j} - k \right) = 0 \textrm{ for all $0 \leq i,j < n^2$} \]
 and
-\[ f_{i,j} x_{i,j} = f_{i,j}^2 \textrm{ for all $0 \leq i,j < n^2$}\]
+\[ f_{i,j} \left(x_{i,j} - f_{i,j}\right) = 0 \textrm{ for all $0 \leq i,j < n^2$}\]
 and, for all $S$ set of indices representing a row, a column or a box
 as per the rules of Sudoku:
-\[ \prod_{(i,j) \in S} x_{i,j} = \prod_{k=1}^{n^2} k = \left(n^2\right)! \; .\]
+\[ \prod_{(i,j) \in S} x_{i,j} = \prod_{k=1}^{n^2} k = n^2! \;\]
+and
+\[ \sum_{(i,j) \in S} x_{i,j} = \sum_{k=1}^{n^2} k = \frac{n \cdot (n^2 + 1)}{2} \; .\]
 
 
 The first equations guarantee that the only permitted values for
