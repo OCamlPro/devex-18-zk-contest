@@ -488,6 +488,22 @@ public:
       this->bp.val(free2_x_3_2) = (this->bp.val(free_x_3_2)) * (this->bp.val(free_x_3_2));
       this->bp.val(free2_x_3_3) = (this->bp.val(free_x_3_3)) * (this->bp.val(free_x_3_3));
 
+
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_2_2+x_2_3+x_3_2+x_3_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_2_0+x_2_1+x_3_0+x_3_1), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_2+x_0_3+x_1_2+x_1_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_0+x_0_1+x_1_0+x_1_1), 1, (10) * (1)));
+
+            this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_3+x_1_3+x_2_3+x_3_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_2+x_1_2+x_2_2+x_3_2), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_1+x_1_1+x_2_1+x_3_1), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_0+x_1_0+x_2_0+x_3_0), 1, (10) * (1)));
+
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_3_0+x_3_1+x_3_2+x_3_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_2_0+x_2_1+x_2_2+x_2_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_1_0+x_1_1+x_1_2+x_1_3), 1, (10) * (1)));
+      this->bp.add_r1cs_constraint(r1cs_constraint<field_type>((x_0_0+x_0_1+x_0_2+x_0_3), 1, (10) * (1)));
+
       //this->bp.val(sym_1) = this->bp.val(x) * this->bp.val(x);
       //this->bp.val(y) = this->bp.val(sym_1) * this->bp.val(x);
       //this->bp.val(sym_2) = this->bp.val(y) + this->bp.val(x);
